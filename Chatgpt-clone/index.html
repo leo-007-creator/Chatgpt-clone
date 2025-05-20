@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Clone</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar open">
+            <div class="sidebar-header">
+                <button class="new-chat-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    New Chat
+                </button>
+            </div>
+            <div class="chat-history">
+            </div>
+            <div class="sidebar-footer">
+                <button class="theme-toggle" title="Toggle theme">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header>
+                <button class="menu-toggle" aria-label="Toggle sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                <h1>ChatGPT Clone</h1>
+            </header>
+
+            <!-- Chat Container -->
+            <div class="chat-container">
+                <!-- Messages Area -->
+                <div class="messages-area">
+                    <!-- Initial welcome message -->
+                    <div class="chat incoming">
+                        <div class="chat-content">
+                            <div class="chat-details">
+                                <div class="avatar">
+                                    <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="35" height="35" rx="4" fill="#10A37F"/>
+                                        <circle cx="17.5" cy="12" r="4" fill="white"/>
+                                        <path d="M8 25C8 20 12 18 17.5 18C23 18 27 20 27 25" stroke="white" strokeWidth="2"/>
+                                    </svg>
+                                </div>
+                                <div class="message-content">
+                                    <p>Hello! I'm your AI assistant. How can I help you today?</p>
+                                </div>
+                            </div>
+                            <div class="chat-actions">
+                                <button class="copy-btn" title="Copy message">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                                <button class="delete-btn" title="Delete message">
+                                    <img src="delete-icon.svg" alt="Delete" width="20" height="20" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="typing-container">
+                    <div class="typing-content">
+                        <div class="typing-textarea">
+                            <textarea placeholder="Type your message..." rows="1"></textarea>
+                            <button class="send-icon" style="display: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="typing-controls">
+                            <button class="theme-toggle-btn" title="Toggle theme">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <!-- <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line> -->
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Configuration
+        const API_URL = "https://api.openai.com/v1/chat/completions";
+        const MODEL = "gpt-3.5-turbo";
+
+
+        async function fetchWithDelay(url, options) {
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second
+            return fetch(url, options);
+        }
+
+        // Theme handling
+        const themeToggle = document.querySelector('.theme-toggle');
+        const themeToggleBtn = document.querySelector('.theme-toggle-btn');
+        const body = document.body;
+
+        // Initialize theme from localStorage or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '🌞';
+            themeToggleBtn.textContent = '🌞';
+        }
+
+        function toggleTheme() {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeToggle.textContent = isDark ? '🌞' : '🌙';
+            themeToggleBtn.textContent = isDark ? '🌞' : '🌙';
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggleBtn.addEventListener('click', toggleTheme);
+
+        // Sidebar handling
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sidebar = document.querySelector('.sidebar');
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('closed');
+        });
+
+        // Message handling
+        const textarea = document.querySelector('textarea');
+        const sendButton = document.querySelector('.send-icon');
+        const messagesArea = document.querySelector('.messages-area');
+        const chatHistory = document.querySelector('.chat-history');
+        let conversationHistory = [];
+
+        function addMessage(content, type) {
+            const chatDiv = document.createElement('div');
+            chatDiv.className = `chat ${type}`;
+
+            const avatar = type === 'incoming' ?
+                `<rect width="35" height="35" rx="4" fill="#10A37F"/>` :
+                `<rect width="35" height="35" rx="4" fill="#1A73E8"/>`;
+
+            chatDiv.innerHTML = `
+                <div class="chat-content">
+                    <div class="chat-details">
+                        <div class="avatar">
+                            <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                ${avatar}
+                                <circle cx="17.5" cy="12" r="4" fill="white"/>
+                                <path d="M8 25C8 20 12 18 17.5 18C23 18 27 20 27 25" stroke="white" strokeWidth="2"/>
+                            </svg>
+                        </div>
+                        <div class="message-content">
+                            <p>${content}</p>
+                        </div>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="copy-btn" title="Copy message">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                        <button class="delete-btn" title="Delete message">
+                            <img src="delete-icon.svg" alt="Delete" width="20" height="20" />
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            messagesArea.appendChild(chatDiv);
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+
+            // Add to chat history
+            const historyItem = document.createElement('div');
+            historyItem.className = 'history-item';
+            historyItem.innerHTML = `
+                <span class="history-content">${content.substring(0, 30)}...</span>
+                <button class="delete-history-btn" title="Delete chat">
+                    <img src="delete-icon.svg" alt="Delete" width="20" height="20" />
+                </button>
+            `;
+            chatHistory.appendChild(historyItem);
+        }
+
+        async function handleSend() {
+            const message = textarea.value.trim();
+            if (!message) return;
+
+
+            addMessage(message, 'outgoing');
+            textarea.value = '';
+            sendButton.style.display = 'none';
+
+            
+            conversationHistory.push({ role: 'user', content: message });
+
+            try {
+    
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'chat incoming typing-indicator';
+                typingDiv.innerHTML = `
+                    <div class="chat-content">
+                        <div class="chat-details">
+                            <div class="avatar">
+                                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="35" height="35" rx="4" fill="#10A37F"/>
+                                    <circle cx="17.5" cy="12" r="4" fill="white"/>
+                                    <path d="M8 25C8 20 12 18 17.5 18C23 18 27 20 27 25" stroke="white" strokeWidth="2"/>
+                                </svg>
+                            </div>
+                            <div class="typing-animation">
+                                <span class="typing-dot"></span>
+                                <span class="typing-dot"></span>
+                                <span class="typing-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                messagesArea.appendChild(typingDiv);
+                messagesArea.scrollTop = messagesArea.scrollHeight;
+
+        
+                const response = await fetchWithDelay(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        model: MODEL,
+                        messages: [
+                            {
+                                role: "system",
+                                content: "You are a helpful assistant."
+                            },
+                            ...conversationHistory
+                        ],
+                        temperature: 0.7,
+                        max_tokens: 1000
+                    })
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error?.message || `HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const aiResponse = data.choices[0].message.content;
+
+         
+                typingDiv.remove();
+
+                
+                addMessage(aiResponse, 'incoming');
+                conversationHistory.push({ role: 'assistant', content: aiResponse });
+
+            } catch (error) {
+                console.error('Error:', error);
+                addMessage(`Error: ${error.message}`, 'incoming');
+            }
+        }
+
+        textarea.addEventListener('input', () => {
+            sendButton.style.display = textarea.value.trim() ? 'block' : 'none';
+        });
+
+        textarea.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                handleSend();
+            }
+        });
+
+        sendButton.addEventListener('click', handleSend);
+
+   
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.copy-btn')) {
+                const content = e.target.closest('.chat').querySelector('.message-content p').textContent;
+                navigator.clipboard.writeText(content).then(() => {
+                    const copyBtn = e.target.closest('.copy-btn');
+                    copyBtn.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    `;
+                    copyBtn.classList.add('copied');
+                    setTimeout(() => {
+                        copyBtn.innerHTML = `
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        `;
+                        copyBtn.classList.remove('copied');
+                    }, 2000);
+                });
+            }
+
+            if (e.target.classList.contains('delete-btn')) {
+                e.target.closest('.chat').remove();
+            }
+
+            if (e.target.classList.contains('delete-history-btn')) {
+                e.target.closest('.history-item').remove();
+            }
+        });
+
+        
+        document.querySelector('.new-chat-btn').addEventListener('click', () => {
+            messagesArea.innerHTML = `
+                <div class="chat incoming">
+                    <div class="chat-content">
+                        <div class="chat-details">
+                            <div class="avatar">
+                                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="35" height="35" rx="4" fill="#10A37F"/>
+                                    <circle cx="17.5" cy="12" r="4" fill="white"/>
+                                    <path d="M8 25C8 20 12 18 17.5 18C23 18 27 20 27 25" stroke="white" strokeWidth="2"/>
+                                </svg>
+                            </div>
+                            <div class="message-content">
+                                <p>Hello! I'm your AI assistant. How can I help you today?</p>
+                            </div>
+                        </div>
+                        <div class="chat-actions">
+                            <button class="copy-btn" title="Copy message">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
+                            <button class="delete-btn" title="Delete message">
+                                <img src="delete-icon.svg" alt="Delete" width="20" height="20" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            chatHistory.innerHTML = '';
+            conversationHistory = [];
+        });
+    </script>
+</body>
+</html> 
